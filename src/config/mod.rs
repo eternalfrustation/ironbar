@@ -14,6 +14,8 @@ use crate::modules::label::LabelModule;
 use crate::modules::launcher::LauncherModule;
 #[cfg(feature = "music")]
 use crate::modules::music::MusicModule;
+#[cfg(feature = "notifications")]
+use crate::modules::notifications::NotificationsModule;
 use crate::modules::script::ScriptModule;
 #[cfg(feature = "sys_info")]
 use crate::modules::sysinfo::SysInfoModule;
@@ -21,6 +23,8 @@ use crate::modules::sysinfo::SysInfoModule;
 use crate::modules::tray::TrayModule;
 #[cfg(feature = "upower")]
 use crate::modules::upower::UpowerModule;
+#[cfg(feature = "volume")]
+use crate::modules::volume::VolumeModule;
 #[cfg(feature = "workspaces")]
 use crate::modules::workspaces::WorkspacesModule;
 use cfg_if::cfg_if;
@@ -45,6 +49,8 @@ pub enum ModuleConfig {
     Launcher(Box<LauncherModule>),
     #[cfg(feature = "music")]
     Music(Box<MusicModule>),
+    #[cfg(feature = "notifications")]
+    Notifications(Box<NotificationsModule>),
     Script(Box<ScriptModule>),
     #[cfg(feature = "sys_info")]
     SysInfo(Box<SysInfoModule>),
@@ -52,6 +58,8 @@ pub enum ModuleConfig {
     Tray(Box<TrayModule>),
     #[cfg(feature = "upower")]
     Upower(Box<UpowerModule>),
+    #[cfg(feature = "volume")]
+    Volume(Box<VolumeModule>),
     #[cfg(feature = "workspaces")]
     Workspaces(Box<WorkspacesModule>),
 }

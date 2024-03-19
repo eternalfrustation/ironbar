@@ -19,9 +19,11 @@ default = [
     "ipc",
     "launcher",
     "music+all",
+    "notifications",
     "sys_info",
     "tray",
     "upower",
+    "volume",
     "workspaces+all"
 ]
 
@@ -56,11 +58,15 @@ music = ["regex"]
 "music+mpris" = ["music", "mpris"]
 "music+mpd" = ["music", "mpd-utils"]
 
+notifications = ["zbus"]
+
 sys_info = ["sysinfo", "regex"]
 
 tray = ["system-tray"]
 
 upower = ["upower_dbus", "zbus", "futures-lite"]
+
+volume = ["libpulse-binding"]
 
 workspaces = ["futures-util"]
 "workspaces+all" = ["workspaces", "workspaces+sway", "workspaces+hyprland"]
@@ -86,11 +92,11 @@ tracing-subscriber = { version = "0.3.17", features = ["env-filter"] }
 tracing-error = "0.2.0"
 tracing-appender = "0.2.3"
 strip-ansi-escapes = "0.2.0"
-color-eyre = "0.6.2"
+color-eyre = "0.6.3"
 serde = { version = "1.0.197", features = ["derive"] }
-indexmap = "2.2.3"
+indexmap = "2.2.5"
 dirs = "5.0.1"
-walkdir = "2.4.0"
+walkdir = "2.5.0"
 notify = { version = "6.1.1", default-features = false }
 wayland-client = "0.31.1"
 wayland-protocols = { version = "0.31.0", features = ["unstable", "client"] }
@@ -103,19 +109,19 @@ ctrlc = "3.4.2"
 cfg-if = "1.0.0"
 
 # cli
-clap = { version = "4.5.1", optional = true, features = ["derive"] }
+clap = { version = "4.5.3", optional = true, features = ["derive"] }
 
 # ipc
 serde_json = { version = "1.0.114", optional = true }
 
 # http
-reqwest = { version = "0.11.24", optional = true }
+reqwest = { version = "0.11.26", optional = true }
 
 # clipboard
 nix = { version = "0.27.1", optional = true, features = ["event"] }
 
 # clock
-chrono = { version = "0.4.34", optional = true, features = ["unstable-locales"] }
+chrono = { version = "0.4.35", optional = true, features = ["unstable-locales"] }
 
 # music
 mpd-utils = { version = "0.2.0", optional = true }
@@ -129,8 +135,11 @@ system-tray = { version = "0.1.5", optional = true }
 
 # upower
 upower_dbus = { version = "0.3.2", optional = true }
-futures-lite = { version = "2.2.0", optional = true }
-zbus = { version = "3.15.2", optional = true }
+futures-lite = { version = "2.3.0", optional = true }
+
+# volume
+libpulse-binding = { version = "2.28.1", optional = true }
+# libpulse-glib-binding = { version = "2.27.1", optional = true }
 
 # workspaces
 swayipc-async = { version = "2.0.1", optional = true }
@@ -141,3 +150,4 @@ futures-util = { version = "0.3.30", optional = true }
 regex = { version = "1.10.3", default-features = false, features = [
   "std",
 ], optional = true } # music, sys_info
+zbus = { version = "3.15.2", optional = true } # notifications, upower

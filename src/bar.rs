@@ -385,6 +385,8 @@ fn add_modules(
             ModuleConfig::Launcher(mut module) => add_module!(module, id),
             #[cfg(feature = "music")]
             ModuleConfig::Music(mut module) => add_module!(module, id),
+            #[cfg(feature = "notifications")]
+            ModuleConfig::Notifications(mut module) => add_module!(module, id),
             ModuleConfig::Script(mut module) => add_module!(module, id),
             #[cfg(feature = "sys_info")]
             ModuleConfig::SysInfo(mut module) => add_module!(module, id),
@@ -392,6 +394,8 @@ fn add_modules(
             ModuleConfig::Tray(mut module) => add_module!(module, id),
             #[cfg(feature = "upower")]
             ModuleConfig::Upower(mut module) => add_module!(module, id),
+            #[cfg(feature = "volume")]
+            ModuleConfig::Volume(mut module) => add_module!(module, id),
             #[cfg(feature = "workspaces")]
             ModuleConfig::Workspaces(mut module) => add_module!(module, id),
         }
